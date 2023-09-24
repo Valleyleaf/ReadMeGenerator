@@ -1,15 +1,47 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const readMeGenerator = ({title, description, installation, usage, contribute}) => 
+
+function compileReadMeFile(a, b, c, d, e, f, g, h, i, j){
+    console.log('This is the values that comes into complieReadmeFile:', a, b, c, d, e, f, g, h, i, j);
+};
+
+
+
+
+const readMeGenerator = ({projectname, projectdescription, installationinstructions, dependanciesinstructions, usageinstructions, imageInsert, licenceinstructions, contributeinstructions, featureinstructions}) => 
 `
-${title}
-${description}
-${installation}
-${usage}
-${contribute}
+#${projectname}
+
+##Description
+${projectdescription}
+##-----------------------------------------------------------------------
+##Installation
+${installationinstructions}
+##-----------------------------------------------------------------------
+##Dependancies
+${dependanciesinstructions}
+##-----------------------------------------------------------------------
+##Usage
+${usageinstructions}
+##-----------------------------------------------------------------------
+##Images
+${imageInsert}
+##-----------------------------------------------------------------------
+##licence
+${licenceinstructions}
+##-----------------------------------------------------------------------
+##contributers
+${contributeinstructions}
+##-----------------------------------------------------------------------
+##Features
+${featureinstructions}
+##-----------------------------------------------------------------------
+Generated using ValleyLeaf ReadMe Generator.
+
 
 `
+// For the above, I have 2 hurdles. 1. I need to figure out how to allow the user to insert image links. 2. I need to ensure that the finished file includes the licence badge.
 
 inquirer
     .prompt([
@@ -17,48 +49,71 @@ inquirer
             type: 'input',
             // Above is what type of prompt we are doing.
             message: 'Project Name:',
-            // Above is what is displayed in the promt. in this case it's username, change it to be appropiate.
-            name: 'name',
-            // Above is what we put in
+            // Above is what is displayed in the promt. in this case it's project name, change it to be appropiate.
+            name: 'projectname',
+            // Above is what we refer back to to access the data.
         },
         {
             type: 'input',
             message: 'Project Description:',
-            name: 'name',
+            name: 'projectdescription',
         },
         {
             type: 'input',
             message: 'Installation Instructions:',
-            name: 'name',
+            name: 'installationinstructions',
         },
         {
             type: 'input',
-            message: 'Usage:',
-            name: 'name',
+            message: 'Dependancies:',
+            name: 'installationinstructions',
         },
         {
             type: 'input',
-            message: 'How to Contribute:',
-            name: 'name',
+            message: 'Languages used:',
+            name: 'usageinstructions',
         },
-
-    ]).then((inputs) => {
+        {
+            type: 'confirm',
+            name: 'imageInsert',
+            message: 'Would you like to add images?:',
+            default: false,
+        },
+        {
+            type: 'checkbox',
+            name: 'licenceinstructions',
+            message: 'What licence do you wish to use:',
+            choices: ['MIT,','APACHE2.0','Boost1.0','MPL2.0','BSD3','None'],
+        },
+        {
+            type: 'input',
+            message: 'Contributers:',
+            name: 'contributeinstructions',
+        },
+        {
+            type: 'input',
+            message: 'Features:',
+            name: 'featureinstructions',
+        },
+    ])
+    .then((inputs) => {
         console.log(inputs)
     const readMeContent = readMeGenerator(inputs)
-    fs.writeFile('./GeneratedFiles/README.md', readMeContent, (err) =>
+    compileReadMeFile(readMeContent)
+    fs.writeFile('./GeneratedFiles/README.md', compileReadMeFile, (err) =>
      err ? console.error(err) : console.log('ReadMe file Created!')
     )
 });
 
     // What is needed for this
-        //GIVEN a command-line application that accepts user input
-        // WHEN I am prompted for information about my application repository
+        //GIVEN a command-line application that accepts user input !
+        // WHEN I am prompted for information about my application repository!
         // THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-        // WHEN I enter my project title
-        // THEN this is displayed as the title of the README
-        // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-        // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-        // WHEN I choose a license for my application from a list of options
+        // WHEN I enter my project title !
+        // THEN this is displayed as the title of the README !
+        // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions !
+        // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests !
+        // WHEN I choose a license for my application from a list of options !
         // THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
         // WHEN I enter my GitHub username
         // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
