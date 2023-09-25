@@ -5,7 +5,7 @@ const initPrompt = ({projectname, projectdescription, installationinstructions, 
 `
 # ${projectname}
 
-## Table of Contents
+## ✨Table of Contents
 * [Description](#Description)
 * [Installation](#Installation)
 * [Dependancies](#Dependancies)
@@ -13,25 +13,25 @@ const initPrompt = ({projectname, projectdescription, installationinstructions, 
 * [licence](#licence)
 * [Questions](#Questions)
 
-## Description
+## 💻Description
 ${projectdescription}
-## -----------------------------------------------------------------------
-## Installation
+
+## 🚨Installation
 ${installationinstructions}
-## -----------------------------------------------------------------------
-## Dependancies
+
+## ✅Dependancies
 ${dependanciesinstructions}
-## -----------------------------------------------------------------------
-## Usage
+
+## 🚀Usage
 ${usageinstructions}
-## -----------------------------------------------------------------------
-## licence
+
+## 📝licence
 ![Github license](https://img.shields.io/badge/license-${licenceinstructions}-green.svg)
-## -----------------------------------------------------------------------
-## Questions
+
+## 👤Questions
 Find me at https://github.com/${creatorinstructions} or reach out to me
 at: ${emailinstructions}
-## -----------------------------------------------------------------------
+
 `
 
 function generateContent(){

@@ -1,28 +1,28 @@
 
 
-# <ReadMe-Generator>
+# ReadMe-Generator
 
-## Description
+## ✨Description
 
 This project was created as my introduction to Node.JS. The purpose of this project was to learn how to call on server-side javascript using the 'node' function provided by node.js. Additionally, we also used the NPM library of modules.
 
 
-## Installation
+## 🚨Installation
 
 Note that this project requires both Node.js and NPM. Ensure you have both installed and available before continuing.
 
 
-## Usage
+## 🚀Usage
 
 In your console, type in node index.js and answer all prompts that show. Upon completion, you will find a generated ReadMe.MD file in your 'Generated files' folder.
 
 
 
-## Credits
+## 👤Credits
 
 ValleyLeaf
 
-## License
+## 📝License
 
 MIT License
 
@@ -36,6 +36,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-## How to Contribute
+## 🤝How to Contribute
 
 Feel free to add additional functionality to this. There are a few additional potential items that can fill a read-me, such as 'Demo' or example images. But I did not want to tackle that just yet, as I need to figure out the functionality in directly adding these items with node.js
