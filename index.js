@@ -3,35 +3,36 @@ const fs = require('fs');
 
 const initPrompt = ({projectname, projectdescription, installationinstructions, dependanciesinstructions, usageinstructions, licenceinstructions, creatorinstructions, emailinstructions}) => 
 `
-#${projectname}
+# ${projectname}
 
-##Description
+## Table of Contents
+* [Description](#Description)
+* [Installation](#Installation)
+* [Dependancies](#Dependancies)
+* [Usage](#Usage)
+* [licence](#licence)
+* [Questions](#Questions)
+
+## Description
 ${projectdescription}
-##-----------------------------------------------------------------------
-##Installation
+## -----------------------------------------------------------------------
+## Installation
 ${installationinstructions}
-##-----------------------------------------------------------------------
-##Dependancies
+## -----------------------------------------------------------------------
+## Dependancies
 ${dependanciesinstructions}
-##-----------------------------------------------------------------------
-##Usage
+## -----------------------------------------------------------------------
+## Usage
 ${usageinstructions}
-##-----------------------------------------------------------------------
-##licence
+## -----------------------------------------------------------------------
+## licence
 ![Github license](https://img.shields.io/badge/license-${licenceinstructions}-green.svg)
-##-----------------------------------------------------------------------
-##Find me at https://github.com/${creatorinstructions} or reach out to me
+## -----------------------------------------------------------------------
+## Questions
+Find me at https://github.com/${creatorinstructions} or reach out to me
 at: ${emailinstructions}
-##-----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 `
-
-        const tableOfContents = [
-            '[1. Introduction]',
-            '[2. Usage]',
-            '[3. Options]',
-            '[4. Examples]',
-            '[5. About]',
-          ];
 
 function generateContent(){
 inquirer
@@ -54,7 +55,7 @@ inquirer
         {
             type: 'input',
             message: 'Dependancies:',
-            name: 'installationinstructions',
+            name: 'dependanciesinstructions',
         },
         {
             type: 'input',
