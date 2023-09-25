@@ -1,15 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-
-function compileReadMeFile(a, b, c, d, e, f, g, h, i, j){
-    console.log('This is the values that comes into complieReadmeFile:', a, b, c, d, e, f, g, h, i, j);
-};
-
-
-
-
-const readMeGenerator = ({projectname, projectdescription, installationinstructions, dependanciesinstructions, usageinstructions, imageInsert, licenceinstructions, contributeinstructions, featureinstructions}) => 
+const initPrompt = ({projectname, projectdescription, installationinstructions, dependanciesinstructions, usageinstructions, licenceinstructions, creatorinstructions, emailinstructions}) => 
 `
 #${projectname}
 
@@ -25,33 +17,29 @@ ${dependanciesinstructions}
 ##Usage
 ${usageinstructions}
 ##-----------------------------------------------------------------------
-##Images
-${imageInsert}
-##-----------------------------------------------------------------------
 ##licence
-${licenceinstructions}
+![Github license](https://img.shields.io/badge/license-${licenceinstructions}-green.svg)
 ##-----------------------------------------------------------------------
-##contributers
-${contributeinstructions}
+##Find me at https://github.com/${creatorinstructions} or reach out to me
+at: ${emailinstructions}
 ##-----------------------------------------------------------------------
-##Features
-${featureinstructions}
-##-----------------------------------------------------------------------
-Generated using ValleyLeaf ReadMe Generator.
-
-
 `
-// For the above, I have 2 hurdles. 1. I need to figure out how to allow the user to insert image links. 2. I need to ensure that the finished file includes the licence badge.
 
+        const tableOfContents = [
+            '[1. Introduction]',
+            '[2. Usage]',
+            '[3. Options]',
+            '[4. Examples]',
+            '[5. About]',
+          ];
+
+function generateContent(){
 inquirer
     .prompt([
         {
             type: 'input',
-            // Above is what type of prompt we are doing.
             message: 'Project Name:',
-            // Above is what is displayed in the promt. in this case it's project name, change it to be appropiate.
             name: 'projectname',
-            // Above is what we refer back to to access the data.
         },
         {
             type: 'input',
@@ -70,14 +58,8 @@ inquirer
         },
         {
             type: 'input',
-            message: 'Languages used:',
+            message: 'Technologies used:', 
             name: 'usageinstructions',
-        },
-        {
-            type: 'confirm',
-            name: 'imageInsert',
-            message: 'Would you like to add images?:',
-            default: false,
         },
         {
             type: 'checkbox',
@@ -87,24 +69,31 @@ inquirer
         },
         {
             type: 'input',
-            message: 'Contributers:',
-            name: 'contributeinstructions',
+            message: 'Creator:',
+            name: 'creatorinstructions',
         },
         {
             type: 'input',
-            message: 'Features:',
-            name: 'featureinstructions',
+            message: 'Email:',
+            name: 'emailinstructions',
         },
     ])
     .then((inputs) => {
-        console.log(inputs)
-    const readMeContent = readMeGenerator(inputs)
-    compileReadMeFile(readMeContent)
-    fs.writeFile('./GeneratedFiles/README.md', compileReadMeFile, (err) =>
-     err ? console.error(err) : console.log('ReadMe file Created!')
-    )
-});
+    const compiledReadmeValues = initPrompt(inputs)
+    console.log('compiledReadmeValues: ', compiledReadmeValues)
+    fs.writeFile('./GeneratedFiles/Readme.md', compiledReadmeValues, (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log('File written successfully.');
+    })
+    });
 
+};
+
+// Start function.
+generateContent();
     // What is needed for this
         //GIVEN a command-line application that accepts user input !
         // WHEN I am prompted for information about my application repository!
@@ -123,12 +112,6 @@ inquirer
         // THEN I am taken to the corresponding section of the README
 
             //Here are some guidelines to help you get started:
-
-            // * Create a `.gitignore` file and include `node_modules/` and `.DS_Store/` so that your `node_modules` directory isn't tracked or uploaded to GitHub. Be sure to create your `.gitignore` file before installing any npm dependencies.
-
-            // * Make sure that your repo includes a `package.json` with the required dependencies. You can create one by running `npm init` when you first set up the project, before installing any dependencies.
-
-            // * Include a video of the typical user flow through your application. This includes views of the prompts and the responses after their selection.
 
             // * Refer to the [Fullstack Blog Video Submission Guide](https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide) for additional guidance on creating a video.
 
