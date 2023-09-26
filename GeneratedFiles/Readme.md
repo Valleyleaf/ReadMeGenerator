@@ -12,16 +12,19 @@
 * [Questions](#Questions)
 
 ## 💻Description
-This project was created to test the features of Node.js and get myself familiarized with it's structure. This repo contains the files necessary to generate additional ReadMe files that contain a solid title, table of content and will then go through a few prompts to fill in items such as a description, installation, dependencies, usage and then share my contact info.
+This project allows the user to create a professional ReadMe file using server-side code. By using this application, the user is able to procure ReadMe files in a simple and consistent manner.
 
 ## 🚨Installation
-Download the necessary files. Open the index.js file with your terminal and access it with the node command.
+To install. Simply download the program and open it in your terminal.
 
 ## ✅Dependancies
-This requires node.js to be installed and uses NPM. So if you do not have NPM installed, you may need to add it.
+Note that this program depends on Node.JS and the NPM module Inquirer. Both are needed for this program to run.
 
 ## 🚀Usage
-access the index file using the node command. Follow the instructions to generate your Readme.MD. Once generated, you will find it in the GeneratedFiles folder.
+To use, simply use the node command to call on the index.js file. Once called, you will be met with a series of prompts. These prompts can be answered with either inputs, or by checking in all applicable options.
+
+## 💊Test
+To test, I am tried to break the application using inputs that are not eligable within the inquirer function. Thankfully, this is automatically handled by the NPM library
 
 ## 👤Questions
 Find me at https://github.com/Valleyleaf or reach out to me
