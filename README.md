@@ -16,7 +16,9 @@ Note that this project requires both Node.js and NPM. Ensure you have both insta
 
 In your console, type in node index.js and answer all prompts that show. Upon completion, you will find a generated ReadMe.MD file in your 'Generated files' folder.
 
+## Images 📷
 
+![Example Code](https://github.com/Valleyleaf/ReadMeGenerator/assets/137734906/93aa7101-698f-4cbc-9638-e3b8239b49b7)
 
 ## 👤Credits
 
