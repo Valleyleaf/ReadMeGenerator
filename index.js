@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const initPrompt = ({projectname, projectdescription, installationinstructions, dependanciesinstructions, usageinstructions, licenceinstructions, creatorinstructions, emailinstructions}) => 
+const initPrompt = ({projectname, projectdescription, installationinstructions, dependanciesinstructions, testinstructions, usageinstructions, licenceinstructions, creatorinstructions, emailinstructions}) => 
 `
 # ${projectname}
 ## 📝licence
@@ -26,6 +26,9 @@ ${dependanciesinstructions}
 
 ## 🚀Usage
 ${usageinstructions}
+
+## 💊Test
+${testinstructions}
 
 ## 👤Questions
 Find me at https://github.com/${creatorinstructions} or reach out to me
@@ -74,6 +77,11 @@ inquirer
         },
         {
             type: 'input',
+            message: 'Tests:',
+            name: 'testinstructions',
+        },
+        {
+            type: 'input',
             message: 'Email:',
             name: 'emailinstructions',
         },
@@ -106,7 +114,7 @@ generateContent();
         // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests !
         // WHEN I choose a license for my application from a list of options !
         // THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-        // WHEN I enter my GitHub username
+        // WHEN I enter my GitHub username !
         // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
         // WHEN I enter my email address
         // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
